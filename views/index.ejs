@@ -1,0 +1,35 @@
+<%- include("partials/header") -%>
+<h1 class="container title-box"><%= date %> Todo List</h1>
+<% todos.forEach((todo) => { %>
+
+<div class="todo-box">
+  <form id="<%= todo.todo %>" action="/delete" method="post">
+    <div class="icon">
+      <input type="hidden" name="data" value="<%= todo.todo %>" />
+      <i
+        class="fas fa-times fa-2x"
+        title="Delete item"
+        onclick="sub('<%= todo.todo %>')"
+      ></i>
+    </div>
+    <div class="todos">
+      <span><%= todo.todo %></span>
+    </div>
+  </form>
+</div>
+
+<% }); %>
+<div class="todo-form">
+  <form action="/" method="post">
+    <input
+      class="form-control todo-form-input"
+      type="text"
+      name="todo"
+      autofocus
+    />
+    <button class="btn btn-block btn-dark todo-form-btn" type="submit">
+      ADD
+    </button>
+  </form>
+</div>
+<%- include("partials/footer") -%>
